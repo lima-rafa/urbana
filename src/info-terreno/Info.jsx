@@ -1,6 +1,7 @@
 import { Box, Button, Card, FormControl, Grid, Input, InputLabel, MenuItem, Select, Slider, TextField, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import pdfGenerate from "./pdfGenerate";
+import gravata from '../assets/gravata.png';
 
 
 export default function Info() {
@@ -141,323 +142,375 @@ export default function Info() {
 
 
     return(
-
-        <Box
-            sx={{
-                width: 600,
-                margin: 'auto'
-            }}
-        >
+        <Box>
             <Card
-                sx={{marginTop: 10,
-                    marginBottom: 20,
-                    p:10, pt: 5, pb: 5,
-                    width: 550
+                sx={{
+                    position: 'sticky',
+                    top: 0,
+                    width: '100%'
                 }}
             >
-
-
-                <Box>
-                    <TextField
-                        label="Solicitante e/ou interessado"
-                        id="outlined-size-small"
-                        size="small"
-                        sx={{m:1, width: 500}}
-                        value={nome}
-                        onChange={handleChangeNome}
-                    />
-                </Box>
-                <Box>
-                    <TextField
-                        label="Endereço do imóvel"
-                        id="outlined-size-small"
-                        size="small"
-                        sx={{m:1, width: 500}}
-                        value={endereco}
-                        onChange={handleChangeEndereco}
-                    />
-                </Box>
-
-                <Box>
-                    <TextField
-                        label="Inscrição do imóvel"
-                        id="outlined-size-small"
-                        size="small"
-                        sx={{m:1, width: 500}}
-                        value={inscricao}
-                        onChange={handleChangeInscricao}
-                    />
-                </Box>
-
-                <Box>
-                    <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
-
-                        <InputLabel id="murado">Murado: </InputLabel>
-                        <Select
-                            labelId="murado"
-                            id="murado"
-                            value={murado}
-                            label="Murado"
-                            onChange={handleChangeMurado}
-                        >
-                            <MenuItem value={1}>Sim</MenuItem>
-                            <MenuItem value={0}>Não</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                <Box>
-                    <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
-
-                        <InputLabel id="plano">Terreno plano: </InputLabel>
-                            <Select
-                                labelId="plano"
-                                id="plano"
-                                value={plano}
-                                label="Plano"
-                                onChange={handleChangePlano}
-                            >
-                                <MenuItem value={1}>Sim</MenuItem>
-                                <MenuItem value={0}>Não</MenuItem>
-                            </Select>
-                    </FormControl>
-                </Box>
-                <Box>
-                    <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
-                        <InputLabel id="demo-select-small">Região: </InputLabel>
-                        <Select
-                            labelId="demo-select-small"
-                            id="demo-select-small"
-                            value={regiao}
-                            label="Região"
-                            onChange={handleChangeRegiao}
-                        >
-                            <MenuItem value={0}>Norte</MenuItem>
-                            <MenuItem value={1}>Sul</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                <Box>
-                    <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
-                        <InputLabel id="demo-select-small">Pavimentação: </InputLabel>
-                        <Select
-                            labelId="demo-select-small"
-                            id="demo-select-small"
-                            value={pavimentacao}
-                            label="Pavimentação"
-                            onChange={handleChangePavimentacao}
-                        >
-                            <MenuItem value={3}>Asfalto</MenuItem>
-                            <MenuItem value={2}>Paralelepípedo</MenuItem>
-                            <MenuItem value={1}>Não pavimentado/solo</MenuItem>
-                        </Select>
-                    </FormControl>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Área do imóvel(m²):
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof AREA === 'number' ? AREA : 0}
-                            onChange={handleSliderChangeAREA}
-                            aria-labelledby="input-slider"
-                            min={54}
-                            step={1}
-                            max={11050}
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={AREA}
-                            size="small"
-                            onChange={handleInputChangeAREA}
-                            onBlur={handleBlurAREA}
-                            inputProps={{
-                            step: 1,
-                            min: 54,
-                            max: 11050,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Área do imóvel construida(m²):
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof AREAC === 'number' ? AREAC : 0}
-                            onChange={handleSliderChangeAREAC}
-                            aria-labelledby="input-slider"
-                            min={54}
-                            step={1}
-                            max={11050}
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={AREAC}
-                            size="small"
-                            onChange={handleInputChangeAREAC}
-                            onBlur={handleBlurAREAC}
-                            inputProps={{
-                            step: 1,
-                            min: 54,
-                            max: 11050,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Testada do imóvel (m):
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof TEST === 'number' ? TEST : 0}
-                            onChange={handleSliderChangeTEST}
-                            aria-labelledby="input-slider"
-                            min={3}
-                            step={1}
-                            max={200}
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={TEST}
-                            size="small"
-                            onChange={handleInputChangeTEST}
-                            onBlur={handleBlurTEST}
-                            inputProps={{
-                            step: 1,
-                            min: 3,
-                            max: 200,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Distância euclidiana até o ponto mais próximo da Avenida principal mais próxima (m):
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof DISTAVPRINC === 'number' ? DISTAVPRINC : 0}
-                            onChange={handleSliderChangeDISTAVPRINC}
-                            aria-labelledby="input-slider"
-                            min={9.5}
-                            step={1}
-                            max={2720}
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={DISTAVPRINC}
-                            size="small"
-                            onChange={handleInputChangeDISTAVPRINC}
-                            onBlur={handleBlurDISTAVPRINC}
-                            inputProps={{
-                            step: 1,
-                            min: 9.5,
-                            max: 2720,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Distância euclidiana até o ponto mais próximo da BR 232 (m):
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof DIST232 === 'number' ? DIST232 : 0}
-                            onChange={handleSliderChangeDIST232}
-                            aria-labelledby="input-slider"
-                            min={12.5}
-                            step={1}
-                            max={3320   }
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={DIST232}
-                            size="small"
-                            onChange={handleInputChangeDIST232}
-                            onBlur={handleBlurDIST232}
-                            inputProps={{
-                            step: 1,
-                            min: 12.5,
-                            max: 3320,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
-                <Box sx={{m:2, width: 400 }}>
-                    <Typography id="input-slider" gutterBottom>
-                        Distância euclidiana até a Matriz de Sant'Ana (m)
-                    </Typography>
-                    <Grid container spacing={2} alignItems="center">
-                        <Grid item xs>
-                        <Slider
-                            value={typeof DISTCE === 'number' ? DISTCE : 0}
-                            onChange={handleSliderChangeDISTCE}
-                            aria-labelledby="input-slider"
-                            min={138}
-                            step={1}
-                            max={9460}
-                        />
-                        </Grid>
-                        <Grid item>
-                        <Input
-                            value={DISTCE}
-                            size="small"
-                            onChange={handleInputChangeDISTCE}
-                            onBlur={handleBlurDISTCE}
-                            inputProps={{
-                            step: 1,
-                            min: 138,
-                            max: 9460,
-                            type: 'number',
-                            'aria-labelledby': 'input-slider',
-                            }}
-                        />
-                        </Grid>
-                    </Grid>
-                </Box>
                 <Box
                     sx={{
+                        pt:2,
+                        pb: 1,
+                        ml: 'auto',
+                        textAlign: 'center',
+                        display: 'flex',
+                        justifyContent: 'center'
 
+
+                    }}
+                >
+                    <Box
+
+                    >
+                        <img src={gravata} width='105' alt="logo"/>
+                    </Box>
+                    <Box>
+                        <Typography
+                            sx={{fontSize: 12}}
+                        >
+                            PREFEITURA DE GRAVATÁ<br/>SECRETARIA DE FINANÇAS
+                        </Typography>
+                    </Box>
+
+                </Box>
+            </Card>
+
+
+            <Box
+                sx={{
+                    ml: 'auto',
+                    margin: 'auto'
+                }}
+            >
+                <Card
+                    sx={{marginTop: 5,
+                        marginBottom: 0,
+                        p:10, pt: 5, pb: 5,
+                        width: '65%',
+                        ml: 'auto',
+                        mr: 'auto',
+                        display: 'flex',
+                        justifyContent: 'center',
                         alignItems: 'center'
                     }}
                 >
-                    <Button variant="contained" size="small"
-                    sx={{width: 550}}
-                    onClick={handlePdf}>
-                        Gerar relatório
-                    </Button>
-                </Box>
-            </Card>
-        </Box>
 
+                    <Box>
+                        <Typography
+                            sx={{
+                                textAlign: 'center',
+                                fontSize: 25
+                            }}
+                        >
+                            Avaliação de Imóvel para ITBI
+                        </Typography>
+                        <Box>
+                            <TextField
+                                label="Solicitante e/ou interessado"
+                                id="outlined-size-small"
+                                size="small"
+                                sx={{m:1, width: 500}}
+                                value={nome}
+                                onChange={handleChangeNome}
+                            />
+                        </Box>
+                        <Box>
+                            <TextField
+                                label="Endereço do imóvel"
+                                id="outlined-size-small"
+                                size="small"
+                                sx={{m:1, width: 500}}
+                                value={endereco}
+                                onChange={handleChangeEndereco}
+                            />
+                        </Box>
+
+                        <Box>
+                            <TextField
+                                label="Inscrição do imóvel"
+                                id="outlined-size-small"
+                                size="small"
+                                sx={{m:1, width: 500}}
+                                value={inscricao}
+                                onChange={handleChangeInscricao}
+                            />
+                        </Box>
+
+                        <Box>
+                            <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
+
+                                <InputLabel id="murado">Murado: </InputLabel>
+                                <Select
+                                    labelId="murado"
+                                    id="murado"
+                                    value={murado}
+                                    label="Murado"
+                                    onChange={handleChangeMurado}
+                                >
+                                    <MenuItem value={1}>Sim</MenuItem>
+                                    <MenuItem value={0}>Não</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                        <Box>
+                            <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
+
+                                <InputLabel id="plano">Terreno plano: </InputLabel>
+                                    <Select
+                                        labelId="plano"
+                                        id="plano"
+                                        value={plano}
+                                        label="Terreno plano"
+                                        onChange={handleChangePlano}
+                                    >
+                                        <MenuItem value={1}>Sim</MenuItem>
+                                        <MenuItem value={0}>Não</MenuItem>
+                                    </Select>
+                            </FormControl>
+                        </Box>
+                        <Box>
+                            <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
+                                <InputLabel id="demo-select-small">Região: </InputLabel>
+                                <Select
+                                    labelId="demo-select-small"
+                                    id="demo-select-small"
+                                    value={regiao}
+                                    label="Região"
+                                    onChange={handleChangeRegiao}
+                                >
+                                    <MenuItem value={0}>Norte</MenuItem>
+                                    <MenuItem value={1}>Sul</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                        <Box>
+                            <FormControl sx={{ m: 1, minWidth: 250 }} size="small">
+                                <InputLabel id="demo-select-small">Pavimentação: </InputLabel>
+                                <Select
+                                    labelId="demo-select-small"
+                                    id="demo-select-small"
+                                    value={pavimentacao}
+                                    label="Pavimentação"
+                                    onChange={handleChangePavimentacao}
+                                >
+                                    <MenuItem value={3}>Asfalto</MenuItem>
+                                    <MenuItem value={2}>Paralelepípedo</MenuItem>
+                                    <MenuItem value={1}>Não pavimentado/solo</MenuItem>
+                                </Select>
+                            </FormControl>
+                        </Box>
+                    </Box>
+                    <Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Área do imóvel(m²):
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof AREA === 'number' ? AREA : 0}
+                                    onChange={handleSliderChangeAREA}
+                                    aria-labelledby="input-slider"
+                                    min={54}
+                                    step={1}
+                                    max={11050}
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={AREA}
+                                    size="small"
+                                    onChange={handleInputChangeAREA}
+                                    onBlur={handleBlurAREA}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 54,
+                                    max: 11050,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Área do imóvel construida(m²):
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof AREAC === 'number' ? AREAC : 0}
+                                    onChange={handleSliderChangeAREAC}
+                                    aria-labelledby="input-slider"
+                                    min={54}
+                                    step={1}
+                                    max={11050}
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={AREAC}
+                                    size="small"
+                                    onChange={handleInputChangeAREAC}
+                                    onBlur={handleBlurAREAC}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 54,
+                                    max: 11050,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Testada do imóvel (m):
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof TEST === 'number' ? TEST : 0}
+                                    onChange={handleSliderChangeTEST}
+                                    aria-labelledby="input-slider"
+                                    min={3}
+                                    step={1}
+                                    max={200}
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={TEST}
+                                    size="small"
+                                    onChange={handleInputChangeTEST}
+                                    onBlur={handleBlurTEST}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 3,
+                                    max: 200,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Distância euclidiana até o ponto mais próximo da Avenida principal mais próxima (m):
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof DISTAVPRINC === 'number' ? DISTAVPRINC : 0}
+                                    onChange={handleSliderChangeDISTAVPRINC}
+                                    aria-labelledby="input-slider"
+                                    min={9.5}
+                                    step={1}
+                                    max={2720}
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={DISTAVPRINC}
+                                    size="small"
+                                    onChange={handleInputChangeDISTAVPRINC}
+                                    onBlur={handleBlurDISTAVPRINC}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 9.5,
+                                    max: 2720,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Distância euclidiana até o ponto mais próximo da BR 232 (m):
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof DIST232 === 'number' ? DIST232 : 0}
+                                    onChange={handleSliderChangeDIST232}
+                                    aria-labelledby="input-slider"
+                                    min={12.5}
+                                    step={1}
+                                    max={3320   }
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={DIST232}
+                                    size="small"
+                                    onChange={handleInputChangeDIST232}
+                                    onBlur={handleBlurDIST232}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 12.5,
+                                    max: 3320,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box sx={{m:2, width: 400 }}>
+                            <Typography id="input-slider" gutterBottom>
+                                Distância euclidiana até a Matriz de Sant'Ana (m)
+                            </Typography>
+                            <Grid container spacing={2} alignItems="center">
+                                <Grid item xs>
+                                <Slider
+                                    value={typeof DISTCE === 'number' ? DISTCE : 0}
+                                    onChange={handleSliderChangeDISTCE}
+                                    aria-labelledby="input-slider"
+                                    min={138}
+                                    step={1}
+                                    max={9460}
+                                />
+                                </Grid>
+                                <Grid item>
+                                <Input
+                                    value={DISTCE}
+                                    size="small"
+                                    onChange={handleInputChangeDISTCE}
+                                    onBlur={handleBlurDISTCE}
+                                    inputProps={{
+                                    step: 1,
+                                    min: 138,
+                                    max: 9460,
+                                    type: 'number',
+                                    'aria-labelledby': 'input-slider',
+                                    }}
+                                />
+                                </Grid>
+                            </Grid>
+                        </Box>
+                        <Box
+                            sx={{
+
+                                alignItems: 'center'
+                            }}
+                        >
+                            <Button variant="contained" size="small"
+                            sx={{width: 420}}
+                            onClick={handlePdf}>
+                                Gerar relatório
+                            </Button>
+                        </Box>
+                    </Box>
+                </Card>
+            </Box>
+        </Box>
     );
 }
