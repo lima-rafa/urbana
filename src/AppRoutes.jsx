@@ -13,7 +13,7 @@ import { useContext } from "react";
 
 const AppRoutes = () => {
     const Private = ({children}) =>{
-        const {signin, login, password, setLogin, setPassword, authenticated} = useContext(AuthContext);
+        const {authenticated} = useContext(AuthContext);
 
         if(!authenticated){
             return <Navigate to="/login" />
