@@ -2,8 +2,7 @@ import{
     BrowserRouter as Router,
     Route,
     Routes,
-    Navigate,
-    redirect
+    Navigate
 } from "react-router-dom";
 import Login from "./signin/Login"
 import Info from "./info-terreno/Info";
