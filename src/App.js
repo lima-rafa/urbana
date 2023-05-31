@@ -3,7 +3,7 @@ import AppRoutes from './AppRoutes';
 
 function App() {
   return (
-    <div className="">
+    <div className="" style={{backgroundImage: 'url:(./assets/background.png'}}>
       <AppRoutes />
     </div>
   );
