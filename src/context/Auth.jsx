@@ -13,15 +13,6 @@ export const AuthProvider = ({ children }) => {
         if(login === "anderson" && password==="15984"){
             navigate("/home");
             setAuthenticated(true);
-        }else if(login === "islane" && password==="14567"){
-            navigate("/home");
-            setAuthenticated(true);
-        }else if(login === "otaviano" && password==="98561"){
-            navigate("/home");
-            setAuthenticated(true);
-        }else if(login === "germano" && password==="25197"){
-            navigate("/home");
-            setAuthenticated(true);
         }
 
     }
