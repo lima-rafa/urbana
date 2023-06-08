@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
     const [authenticated, setAuthenticated] = useState(false);
 
     const signin = (login, password) =>{
-        if(login === "anderson" && password==="15984"){
+        if(login === "anderson" && password==="753159"){
             navigate("/home");
             setAuthenticated(true);
         }
